@@ -1,0 +1,11 @@
+path: C:/Users/dlgus/embeded_SW/final_4class_dataset
+
+train: images/train
+val: images/val
+test: images/test
+
+names:
+  0: person
+  1: cat
+  2: crow
+  3: trash_bag

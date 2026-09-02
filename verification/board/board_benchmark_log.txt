@@ -1,0 +1,63 @@
+$ /usr/src/tensorrt/bin/trtexec --onnx=model_fp32.onnx --saveEngine=model_fp16.engine --fp16 --workspace=1024
+
+[TRT] Detected 1 inputs and 3 output network tensors.
+[I] Starting inference threads
+[I] Warmup completed 16 queries over 200 ms
+[I] Timing trace has 261 queries over 3.02469 s
+[I] Trace averages of 10 runs:
+[I] Average on 10 runs - GPU latency: 11.2901 ms - Host latency: 11.5142 ms (end to end 11.5236 ms, enqueue 3.29911 ms)
+[I] Average on 10 runs - GPU latency: 11.2816 ms - Host latency: 11.506 ms (end to end 11.515 ms, enqueue 3.32607 ms)
+[I] Average on 10 runs - GPU latency: 11.2801 ms - Host latency: 11.504 ms (end to end 11.5159 ms, enqueue 3.17238 ms)
+[I] Average on 10 runs - GPU latency: 11.719 ms - Host latency: 11.9491 ms (end to end 11.9731 ms, enqueue 3.631 ms)
+[I] Average on 10 runs - GPU latency: 11.4408 ms - Host latency: 11.6788 ms (end to end 11.6896 ms, enqueue 3.75296 ms)
+[I] Average on 10 runs - GPU latency: 11.285 ms - Host latency: 11.5094 ms (end to end 11.5225 ms, enqueue 2.90689 ms)
+[I] Average on 10 runs - GPU latency: 11.2854 ms - Host latency: 11.5108 ms (end to end 11.5188 ms, enqueue 3.17158 ms)
+[I] Average on 10 runs - GPU latency: 11.2875 ms - Host latency: 11.512 ms (end to end 11.5231 ms, enqueue 3.06936 ms)
+[I] Average on 10 runs - GPU latency: 11.2926 ms - Host latency: 11.5161 ms (end to end 11.525 ms, enqueue 3.06318 ms)
+[I] Average on 10 runs - GPU latency: 11.2829 ms - Host latency: 11.5061 ms (end to end 11.5158 ms, enqueue 3.01532 ms)
+[I] Average on 10 runs - GPU latency: 11.2924 ms - Host latency: 11.5174 ms (end to end 11.5284 ms, enqueue 3.12833 ms)
+[I] Average on 10 runs - GPU latency: 11.2969 ms - Host latency: 11.5215 ms (end to end 11.5306 ms, enqueue 2.91459 ms)
+[I] Average on 10 runs - GPU latency: 11.7998 ms - Host latency: 12.0366 ms (end to end 12.0529 ms, enqueue 4.06007 ms)
+[I] Average on 10 runs - GPU latency: 11.3416 ms - Host latency: 11.5752 ms (end to end 11.5847 ms, enqueue 2.75715 ms)
+[I] Average on 10 runs - GPU latency: 11.2863 ms - Host latency: 11.5104 ms (end to end 11.5189 ms, enqueue 2.88091 ms)
+[I] Average on 10 runs - GPU latency: 11.2939 ms - Host latency: 11.5176 ms (end to end 11.5284 ms, enqueue 3.03997 ms)
+[I] Average on 10 runs - GPU latency: 11.3058 ms - Host latency: 11.529 ms (end to end 11.5367 ms, enqueue 2.82205 ms)
+[I] Average on 10 runs - GPU latency: 11.674 ms - Host latency: 11.9122 ms (end to end 11.9227 ms, enqueue 4.18435 ms)
+[I] Average on 10 runs - GPU latency: 11.3048 ms - Host latency: 11.5321 ms (end to end 11.5411 ms, enqueue 2.6248 ms)
+[I] Average on 10 runs - GPU latency: 11.2918 ms - Host latency: 11.5161 ms (end to end 11.5252 ms, enqueue 2.85413 ms)
+[I] Average on 10 runs - GPU latency: 11.3005 ms - Host latency: 11.5238 ms (end to end 11.5345 ms, enqueue 2.86099 ms)
+[I] Average on 10 runs - GPU latency: 11.313 ms - Host latency: 11.5368 ms (end to end 11.546 ms, enqueue 2.75471 ms)
+
+[I] Host Latency
+[I] min: 11.4562 ms (end to end 11.4722 ms)
+[I] max: 14.5691 ms (end to end 14.585 ms)
+[I] mean: 11.5775 ms (end to end 11.588 ms)
+[I] median: 11.5188 ms (end to end 11.5284 ms)
+[I] percentile: 14.0077 ms at 99% (end to end 14.0138 ms at 99%)
+[I] throughput: 86.2899 qps
+[I] walltime: 3.02469 s
+
+[I] Enqueue Time
+[I] min: 2.0929 ms
+[I] max: 13.3337 ms
+[I] median: 2.95703 ms
+
+[I] GPU Compute
+[I] min: 11.2312 ms
+[I] max: 14.333 ms
+[I] mean: 11.3511 ms
+[I] median: 11.2937 ms
+[I] percentile: 13.7708 ms at 99%
+[I] total compute time: 2.96265 s
+
+&&&& PASSED TensorRT.trtexec # /usr/src/tensorrt/bin/trtexec --onnx=model_fp32.onnx --saveEngine=model_fp16.engine --fp16 --workspace=1024
+
+# ============================================================
+# [요약]
+# 엔진: model_fp16.engine (FP16)
+# 평균 GPU 추론시간(mean): 11.3511 ms
+# 처리량(throughput): 86.2899 qps (약 88 FPS)
+# 99% 구간: 13.7708 ms 이하
+# 검증 보드: 한백전자 AI Mavin (NVIDIA Jetson Xavier NX, JetPack 4.4, TensorRT 7.1)
+# 참고: 보드 시각(타임스탬프)은 인터넷 미연결로 실제 날짜와 다를 수 있음
+# ============================================================

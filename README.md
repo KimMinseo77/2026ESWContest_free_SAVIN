@@ -7,7 +7,7 @@
 ## 개발 배경 및 목표
 
 - 도심 야생동물의 쓰레기 접근으로 인한 봉투 파손·부상 위험·반복 민원 문제 해결
-- 단순 포획·퇴치가 아닌, 동물을 해치지 않고 쓰레기 접근만 통제하는 관리 시스템 제안
+- 단순 포획·퇴치가 아닌, **동물을 해치지 않고 쓰레기 접근만 통제하는 관리 시스템** 제안
 - On-device AI 기반 실시간 객체 탐지 + 상황 맞춤형 단계별 액추에이팅 + 주야간 안정성 확보
 
 ## 시스템 구성
@@ -21,7 +21,7 @@
 - **Host PC / Edge Board**: 카메라 영상 획득, YOLO 실시간 객체 탐지, 위험 점수 산출, 제어 명령 전송
 - **Orange Board (MCU)**: 시리얼 명령 수신·파싱, 액추에이터(서보·모터·LED·매트릭스) 실시간 제어
 
-## 저장소 구조
+## 파 구조
 
 ```
 Project/
@@ -37,7 +37,7 @@ Project/
 │   └── crow/                       # 까마귀 대응: owl(부엉이 울음)
 ├── dataset/                        # 학습 데이터셋 설정
 │   ├── data.yaml                   # 클래스 정보(4종) 및 상대경로 설정
-│   ├── labels.zip                  # 라벨(YOLO txt) 압축 파일 — 이미지 원본은 용량 문제로 미포함 (보관처는 팀 내 별도 공유)
+│   ├── labels.zip                  # 라벨(YOLO txt) 압축 파일 — 이미지 원본은 용량 문제로 미포함
 │   └── v3-model-code.ipynb             # YOLOv8n 모델 학습 및 성능 검증 코드 (Kaggle Notebook, Tesla T4)
 └── verification/                   # PC/보드 실측 검증
     ├── pc/                         # 노트북(PC, CPU) 환경 검증
@@ -87,7 +87,7 @@ Project/
 pip install ultralytics opencv-python pyserial pygame
 python main.py
 ```
-> `main.py` 내 `SERIAL_PORT = 'COM3'` 값을 실제 Orange Board가 연결된 포트로 수정필요.
+> `main.py` 내 `SERIAL_PORT = 'COM3'` 값을 실제 Orange Board가 연결된 포트로 수정 필요.
 
 ### 2. Orange Board 펌웨어 업로드
 Arduino IDE에서 `Arduino/actuator_control.ino` 열고 보드에 업로드

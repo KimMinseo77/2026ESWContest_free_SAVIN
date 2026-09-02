@@ -1,0 +1,4 @@
+format,path,mAP50,mAP50-95,avg_latency_ms,AP50_person,AP50_cat,AP50_crow,AP50_trash_bag,AP50-95_person,AP50-95_cat,AP50-95_crow,AP50-95_trash_bag
+pt (원본),v3_best.pt,0.8226,0.5292,30.24,0.7915,0.8404,0.9486,0.7098,0.5529,0.5449,0.6254,0.3934
+onnx-fp32,./step1_results\model_fp32.onnx,0.8153,0.527,98.5,0.7941,0.8068,0.9556,0.7047,0.5625,0.5284,0.6367,0.3804
+onnx-int8,./step1_results\model_int8.onnx,0.7991,0.5115,165.98,0.7623,0.8233,0.9574,0.6535,0.5275,0.5535,0.6329,0.3321

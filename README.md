@@ -87,7 +87,7 @@ Project/
 pip install ultralytics opencv-python pyserial pygame
 python main.py
 ```
-> `main.py` 내 `SERIAL_PORT = 'COM3'` 값을 실제 Orange Board가 연결된 포트로 수정하세요.
+> `main.py` 내 `SERIAL_PORT = 'COM3'` 값을 실제 Orange Board가 연결된 포트로 수정필요.
 
 ### 2. Orange Board 펌웨어 업로드
 Arduino IDE에서 `Arduino/actuator_control.ino` 열고 보드에 업로드

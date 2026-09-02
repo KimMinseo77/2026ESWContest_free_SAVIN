@@ -37,8 +37,8 @@ Project/
 │   └── crow/                       # 까마귀 대응: owl(부엉이 울음)
 ├── dataset/                        # 학습 데이터셋 설정
 │   ├── data.yaml                   # 클래스 정보(4종) 및 상대경로 설정
-│   └── labels.zip                  # 라벨(YOLO txt) 압축 파일 — 이미지 원본은 용량 문제로 미포함 (보관처는 팀 내 별도 공유)
-├── v3-model-code.ipynb             # YOLOv8n 모델 학습 및 성능 검증 코드 (Kaggle Notebook, Tesla T4)
+│   ├── labels.zip                  # 라벨(YOLO txt) 압축 파일 — 이미지 원본은 용량 문제로 미포함 (보관처는 팀 내 별도 공유)
+│   └── v3-model-code.ipynb             # YOLOv8n 모델 학습 및 성능 검증 코드 (Kaggle Notebook, Tesla T4)
 └── verification/                   # PC/보드 실측 검증
     ├── pc/                         # 노트북(PC, CPU) 환경 검증
     │   ├── pc_convert_and_eval.py  # .pt → .onnx(FP32) → .onnx(INT8) 변환 및 mAP·속도 측정

@@ -2,7 +2,7 @@
 
 야생동물(까마귀·고양이)의 도심 쓰레기 집하장 접근을 온디바이스 AI로 실시간 탐지하고,
 동물에게 상해를 입히지 않는 비접촉 방식(서보 조준·주야간 차등 자극·종별 맞춤 음원)으로
-쓰레기 훼손을 방지하는 시스템입니다. 
+쓰레기 훼손을 방지하는 시스템
 
 ## 개발 배경 및 목표
 
@@ -121,17 +121,46 @@ chmod +x convert_and_benchmark_fp16.sh   # 최초 1회, 실행 권한 부여
 
 ## 데이터셋 안내
 
-`dataset/labels.zip`에는 라벨(YOLO txt)만 포함되어 있으며, 원본 이미지는 용량 문제로
-저장소에 포함하지 않았습니다. 학습을 처음부터 재현하려면 이미지 데이터를 별도로 준비한 뒤,
-`dataset/data.yaml`이 있는 위치를 데이터셋 루트로 두고 `images/train`, `images/val`, `images/test`
-폴더를 그 안에 구성하세요.
+전체 학습 데이터셋은 저장소 용량을 고려하여 포함하지 않았으며,
+데이터셋의 구성 및 YOLO 라벨 형식을 확인할 수 있도록 일부 샘플 데이터를 제공.
 
-## 알려진 이슈 (TODO)
+`dataset_sample/`에는 실제 학습에 사용한 데이터 중 일부 이미지와
+각 이미지에 대응하는 YOLO 형식의 라벨(`.txt`)이 포함.
 
-- [ ] 온보드 mAP 정밀 측정 (현재 보드 구형 TensorRT 7.1 호환성 문제로 속도만 실측, 정확도는 후속 검증 예정)
+```text
+dataset_sample/
+├── images/
+│   ├── train/
+│   ├── val/
+│   └── test/
+├── labels/
+│   ├── train/
+│   ├── val/
+│   └── test/
+└── data.yaml
+```
+
+샘플은 person, cat, crow, trash_bag의 4개 클래스로 구성되어 있으며,
+원본 데이터셋의 Train / Validation / Test 분할 구조를 유지.
+
+※ 전체 학습 데이터셋이 아닌 구조 확인용 샘플이므로,
+본 저장소의 샘플 데이터만으로 최종 모델의 학습 결과를 동일하게 재현할 수는 없음.
+
+## 실험 한계점 및 향후 개선
+
+- 사용한 보드의 JetPack 4.4 및 TensorRT 7.1 환경에서 최신 Ultralytics 기반 ONNX 모델을 변환·추론하는 과정에서 그래프 호환성 문제가 발생하였으며, Bounding Box의 `w`, `h` 값이 비정상적으로 산출되는 현상을 확인.
+
+- 동일한 ONNX 모델을 PC의 **ONNX Runtime 환경에서 실행했을 때는 정상적인 객체 탐지 결과를 확인.**
+  이에 따라 해당 현상은 학습된 모델 자체보다는 **구형 JetPack/TensorRT 환경과 ONNX 모델 간의 호환성 문제**로 판단.
+
+- 따라서 본 프로젝트에서는 최종 시연의 안정성을 위해 **노트북에서 객체 탐지 및 판단을 수행하고, Orange Board를 통해 액추에이터를 제어하는 방식**으로 시스템을 구성.
+
+- 향후에는 **최신 JetPack을 지원하는 임베디드 보드 환경에서 모델을 재검증**하거나, 해당 TensorRT 버전과 호환되는 ONNX 변환 설정을 적용하여 온보드 추론 및 정확도 평가를 추가로 수행할 예정.
 
 ## 참고문헌
 
 [1] 연합뉴스, 「사람 공격하고 쓰레기봉투 파헤치고…창원서 큰부리까마귀 골치」, 2026.06.12.
 [2] 연합뉴스, 「창원시, 농업기술센터 청사에도 길고양이 공공급식소 설치」, 2024.03.15.
 [3] D. Menaga, Roshan P M, Sangamithra M, "SafeBin: Waste Monitoring and Sharp Object Detection for Animal Welfare Using YOLO Based Vision," 2026 International Conference on Connected Intelligence for Industrial Applications (CI2A), 2026.04.03.
+[4] Applied Animal Behaviour Science, "Veterinary background noise elicits fear responses in cats while freely moving in a confined space and during an examination," 2022.
+[5] T. G. Jalgaonkar et al., “Emerging technology-driven bird deterrence methods for agricultural crop protection: a systematic literature review,” Smart Agricultural Technology, Vol. 14, 2026, 102403.
